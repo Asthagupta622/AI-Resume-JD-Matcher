@@ -31,5 +31,6 @@ setuptools
 scikit-learn>=1.2,<2.0
 cython<3
 PyPDF2==3.0.1
+rake_nltk==1.0.6
 
 
