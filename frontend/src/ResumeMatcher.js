@@ -245,7 +245,7 @@ function ResumeMatcher() {
     formData.append("linkedin_url", linkedinUrl);
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://127.0.0.1:5000/match");
+    xhr.open("POST", "https://ai-resume-jd-matcher-12.onrender.com/match");
 
     xhr.upload.onprogress = (event) => {
       if (event.lengthComputable) {
