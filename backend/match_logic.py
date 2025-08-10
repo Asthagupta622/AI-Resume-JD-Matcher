@@ -1,5 +1,3 @@
-# backend/match_logic.py
-
 import os
 import cohere
 from dotenv import load_dotenv
@@ -13,9 +11,14 @@ from nltk.tokenize import word_tokenize
 from rake_nltk import Rake
 
 # --- Ensure NLTK required data is present ---
-for resource in ["stopwords", "punkt"]:
+# Added "punkt_tab" to avoid LookupError on newer NLTK versions
+required_resources = ["stopwords", "punkt", "punkt_tab"]
+for resource in required_resources:
     try:
-        nltk.data.find(f"corpora/{resource}" if resource == "stopwords" else f"tokenizers/{resource}")
+        if resource == "stopwords":
+            nltk.data.find(f"corpora/{resource}")
+        else:  # punkt and punkt_tab are tokenizers
+            nltk.data.find(f"tokenizers/{resource}")
     except LookupError:
         nltk.download(resource)
 
@@ -37,8 +40,7 @@ def get_embedding(text):
     resp = co.embed(
         texts=[text],
         model="embed-english-v3.0",
-        input_type="search_document"
-        
+        input_type="search_document"  # required by this model
     )
     return resp.embeddings[0]
 
@@ -99,7 +101,9 @@ def extract_phrases(text, max_phrases=10):
     ranked_phrases = rake.get_ranked_phrases()
     return ranked_phrases[:max_phrases]
 
-
+# -------------------------
+# Match logic
+# -------------------------
 def match_resume_logic(resume_text, job_text):
     # Get embeddings
     resume_emb = get_embedding(resume_text)
