@@ -13,7 +13,7 @@ itsdangerous==2.2.0
 Jinja2==3.1.6
 joblib==1.5.1
 MarkupSafe==3.0.2
-nltk==3.9.1
+nltk>=3.8.2
 PyMuPDF==1.26.1
 pyphen==0.17.2
 regex==2024.11.6
