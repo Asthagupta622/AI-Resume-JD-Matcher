@@ -1,0 +1,52 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.env
+.env.*
+!.env.example
+
+# Node.js (React)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+build/
+.DS_Store
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+.vscode/
+
+# pytest cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Misc
+*.log
+
+# Ignore runtime files or temp files
+*.swp
+*.swo
+*~
+
+# Ignore local database (example, if using SQLite)
+*.sqlite3
+
+# Ignore uploads or any local storage that shouldn’t be in repo
+uploads/
+media/
