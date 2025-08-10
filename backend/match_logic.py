@@ -36,8 +36,8 @@ def get_embedding(text):
     """Get Cohere embedding for a given text."""
     resp = co.embed(
         texts=[text],
-        model="embed-english-v3.0",
-        input_type="search_document"
+        model="embed-english-v3.0"
+        
     )
     return resp.embeddings[0]
 
