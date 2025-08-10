@@ -36,7 +36,8 @@ def get_embedding(text):
     """Get Cohere embedding for a given text."""
     resp = co.embed(
         texts=[text],
-        model="embed-english-v3.0"
+        model="embed-english-v3.0",
+        input_type="search_document"
         
     )
     return resp.embeddings[0]
@@ -98,9 +99,7 @@ def extract_phrases(text, max_phrases=10):
     ranked_phrases = rake.get_ranked_phrases()
     return ranked_phrases[:max_phrases]
 
-# -------------------------
-# Match logic
-# -------------------------
+
 def match_resume_logic(resume_text, job_text):
     # Get embeddings
     resume_emb = get_embedding(resume_text)
